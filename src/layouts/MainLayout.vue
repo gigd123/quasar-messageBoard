@@ -98,7 +98,7 @@ export default {
   methods: {
     logOut () {
       this.$store.commit('Account/CURR_USER', 'Sign In')
-      this.$router.push({ path: '/SignIn' })
+      this.$router.push({ path: '/' })
     },
     switchLeftDrawerOpen () {
       this.leftDrawerOpen = false

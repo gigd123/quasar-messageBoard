@@ -49,7 +49,7 @@ export default {
       axios.delete(api).then(response => {
         if (response.status === 200) {
           this.$store.commit('Account/CURR_USER', 'Sign In')
-          this.$router.push({ path: '/SignIn' })
+          this.$router.push({ path: '/' })
         }
       })
     }

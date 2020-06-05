@@ -5,7 +5,7 @@ export function userSignUp (context, { name, email, passwd }) {
   const api = 'http://localhost:3000/user'
   axios.post(api, { name, email, passwd, createdAt }).then((response) => {
     if (response.status === 201) {
-      this.$router.push({ path: '/SignIn' })
+      this.$router.push({ path: '/' })
     }
   })
 }

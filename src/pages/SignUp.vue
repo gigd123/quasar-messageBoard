@@ -94,7 +94,7 @@ export default {
       this.$store.dispatch('Account/userSignUp', { name, email, passwd })
     },
     goSignIn () {
-      this.$router.push({ path: '/SignIn' })
+      this.$router.push({ path: '/' })
     },
     alert () {
       this.$q.dialog({
