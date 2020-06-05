@@ -4,14 +4,11 @@
     bordered
     separator
   >
-    <q-item
-      clickable
-      v-ripple
-    >
+    <q-item>
       <q-item-section class="col-3">
         <q-item-label class="q-mt-sm">{{itemName}}</q-item-label>
       </q-item-section>
-      <q-item-section>
+      <q-item-section class="col-5">
         <q-item-label
           class="q-mt-sm"
           v-if="!editData"
@@ -55,23 +52,32 @@
         </q-item-label>
       </q-item-section>
       <q-item-section side>
-        <q-item-label
-          class="q-mt-sm"
+        <q-btn
+          :size="'sm'"
+          flat
+          color="primary"
+          label="Edit"
           v-if="!editData && itemName !== 'Created Time'"
           @click="editData = !editData"
-        >Edit</q-item-label>
-        <q-item-label
-          class="q-mt-sm"
+        />
+        <q-btn
+          :size="'sm'"
+          flat
+          color="primary"
+          label="Cancel"
           v-if="!!editData"
           @click="editData = !editData"
-        >Cancel</q-item-label>
+        />
       </q-item-section>
       <q-item-section side>
-        <q-item-label
-          class="q-mt-sm"
+        <q-btn
+          :size="'sm'"
+          flat
+          color="primary"
+          label="Save"
           v-if="!!editData"
           @click="updateAccount"
-        >Save</q-item-label>
+        />
       </q-item-section>
     </q-item>
   </q-list>

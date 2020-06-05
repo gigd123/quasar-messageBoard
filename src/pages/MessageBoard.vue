@@ -38,8 +38,6 @@
               class="bg-white text-black"
             >
               <q-item
-                clickable
-                v-ripple
                 v-for="message in item.response"
                 :key="message.id"
               >
@@ -76,7 +74,7 @@
         :class="{visibility: !!visibility}"
       >
         <div
-          class="q-pa-md white"
+          class="q-pa-md bg-white"
           style="width: 40%"
         >
           <q-input
@@ -223,8 +221,6 @@ export default {
 .visibility
   visibility: visible !important
 
-.white
-  background-color: white
 .showCommentInput
   display: block !important
 </style>

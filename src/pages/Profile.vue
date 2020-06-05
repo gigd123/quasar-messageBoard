@@ -2,7 +2,7 @@
   <div class="flex justify-center q-pt-xl">
     <div
       class="q-pa-md "
-      style="width: 500px"
+      style="width: 600px"
     >
       <DataInput
         :itemName="'Name'"
