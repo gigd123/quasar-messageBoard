@@ -67,10 +67,10 @@ export default {
       this.userData.forEach((data) => {
         if (data.name === this.userAccount) {
           if (data.passwd === this.password) {
-            this.$router.push({ path: '/MessageBoard' }).catch(err => console.log('all good', err))
             this.$store.commit('Account/CURR_USER', data.name)
             this.$store.commit('Account/CURR_USER_ID', data.id)
             this.$store.commit('Account/CURR_USER_DATA', data)
+            this.$router.push({ path: '/MessageBoard' }).catch(err => console.log('all good', err))
             this.hasMatchAccount = true
           }
         }
