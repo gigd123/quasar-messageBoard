@@ -4,39 +4,22 @@
       class="q-pa-md "
       style="width: 500px"
     >
-      <q-list
-        class="q-mb-md"
-        bordered
-        separator
-        v-for="(value, name, index) in currUserData"
-        :key="index"
-      >
-        <q-item
-          clickable
-          v-ripple
-          v-if="name !== 'id'"
-        >
-          <q-item-section class="col-3">
-            <q-item-label class="q-mt-sm">{{name}}</q-item-label>
-          </q-item-section>
-          <q-item-section>
-            <q-item-label
-              class="q-mt-sm"
-              v-if="!editData"
-            >{{value}}</q-item-label>
-            <q-item-label
-              class="q-mt-sm"
-              v-if="!!editData"
-            >
-              <q-input
-                outlined
-                v-model="newData[index]"
-                :dense="true"
-              />
-            </q-item-label>
-          </q-item-section>
-        </q-item>
-      </q-list>
+      <DataInput
+        :itemName="'Name'"
+        :itemValue="currUserData.name"
+      />
+      <DataInput
+        :itemName="'Email'"
+        :itemValue="currUserData.email"
+      />
+      <DataInput
+        :itemName="'Password'"
+        :itemValue="currUserData.passwd"
+      />
+      <DataInput
+        :itemName="'Created Time'"
+        :itemValue="currUserData.createdAt"
+      />
       <div class="flex justify-between">
         <q-btn
           color="primary"
@@ -70,12 +53,18 @@
 <script>
 import { mapGetters } from 'vuex'
 import axios from 'axios'
+import DataInput from 'components/DataInput'
 
 export default {
-  name: 'PageIndex',
+  name: 'Profile',
+
+  components: {
+    DataInput
+  },
 
   data () {
     return {
+      newData: '',
       newData0: '',
       newData1: '',
       newData2: '',

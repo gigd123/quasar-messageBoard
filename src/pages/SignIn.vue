@@ -52,7 +52,7 @@
 import { mapGetters } from 'vuex'
 
 export default {
-  name: 'PageIndex',
+  name: 'SignIn',
 
   data () {
     return {
