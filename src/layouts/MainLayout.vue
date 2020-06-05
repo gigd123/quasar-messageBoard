@@ -54,6 +54,8 @@
           v-for="link in essentialLinks"
           :key="link.title"
           v-bind="link"
+          :leftDrawerOpen="leftDrawerOpen"
+          @newLeftDrawerOpen="switchLeftDrawerOpen"
         />
       </q-list>
     </q-drawer>
@@ -95,13 +97,16 @@ export default {
   },
   methods: {
     logOut () {
-      this.$store.commit('signUpIn/CURR_USER', 'Sign In')
+      this.$store.commit('Account/CURR_USER', 'Sign In')
       this.$router.push({ path: '/SignIn' })
+    },
+    switchLeftDrawerOpen () {
+      this.leftDrawerOpen = false
     }
   },
   computed: {
     ...mapGetters({
-      currUser: 'signUpIn/currUser'
+      currUser: 'Account/currUser'
     })
   }
 }

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import signUpIn from './signUpIn'
+import Account from './Account'
 
 // import example from './module-example'
 
@@ -17,7 +17,7 @@ Vue.use(Vuex)
 
 const Store = new Vuex.Store({
   modules: {
-    signUpIn
+    Account
   },
 
   // enable strict mode (adds overhead!)

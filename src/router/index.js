@@ -27,7 +27,7 @@ export default function () {
   })
 
   Router.beforeEach((to, from, next) => {
-    const account = store.getters['signUpIn/currUser']
+    const account = store.getters['Account/currUser']
     if (to.meta.requiresAuth) {
       if (account !== 'Sign In' && account !== '') {
         next()

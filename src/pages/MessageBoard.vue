@@ -22,11 +22,14 @@
             class="bg-primary text-white"
             expand-separator
             :label="item.subject"
-            :caption="item.name"
           >
             <q-card>
               <q-card-section class="bg-grey-3 text-black">
-                {{item.content}}
+                <span class="text-body1">{{item.content}}</span>
+                <br>
+                <br>
+                <br>
+                <span class="text-caption">{{!!item.name ? item.name : 'This account has already been removed!'}} {{item.createdAt}}</span>
               </q-card-section>
             </q-card>
             <q-list
@@ -88,11 +91,18 @@
             filled
             type="textarea"
           />
-          <q-btn
-            color="primary"
-            label="Add title"
-            @click="addTitle"
-          />
+          <div class="flex justify-between">
+            <q-btn
+              color="primary"
+              label="cancel"
+              @click="visibility = !visibility"
+            />
+            <q-btn
+              color="primary"
+              label="Add title"
+              @click="addTitle"
+            />
+          </div>
         </div>
       </div>
     </template>
@@ -166,9 +176,9 @@ export default {
 
   computed: {
     ...mapGetters({
-      currUser: 'signUpIn/currUser',
-      currUserId: 'signUpIn/currUserId',
-      userData: 'signUpIn/userData'
+      currUser: 'Account/currUser',
+      currUserId: 'Account/currUserId',
+      userData: 'Account/userData'
     }),
     newMessageBoard () {
       return this.messageBoard.map(item => {
@@ -194,7 +204,7 @@ export default {
   },
 
   created () {
-    this.$store.dispatch('signUpIn/getAllUserData')
+    this.$store.dispatch('Account/getAllUserData')
     this.getMessageResponse()
     this.getMessageBoard()
   },
@@ -208,8 +218,7 @@ export default {
   position: fixed
   top: 0
   z-index: 10
-  background-color: $grey-5
-  opacity: 0.8
+  background-color: rgba(0,0,0,0.8)
 
 .visibility
   visibility: visible !important

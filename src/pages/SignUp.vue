@@ -87,10 +87,20 @@ export default {
       const name = this.name
       const email = this.email
       const passwd = this.passwd
-      this.$store.dispatch('signUpIn/userSignUp', { name, email, passwd })
+      if (this.allUserName.includes(name)) {
+        this.alert()
+        return
+      }
+      this.$store.dispatch('Account/userSignUp', { name, email, passwd })
     },
     goSignIn () {
       this.$router.push({ path: '/SignIn' })
+    },
+    alert () {
+      this.$q.dialog({
+        title: 'Account Name Mistake',
+        message: 'This account has already been registered'
+      })
     }
   },
 
@@ -99,13 +109,13 @@ export default {
       return 'primeplus'
     },
     ...mapGetters({
-      idData: 'signUpIn/idData',
-      allUserName: 'signUpIn/allUserName'
+      idData: 'Account/idData',
+      allUserName: 'Account/allUserName'
     })
   },
 
   created () {
-    this.$store.dispatch('signUpIn/getAllUserData')
+    this.$store.dispatch('Account/getAllUserData')
   },
 
   mounted () { }

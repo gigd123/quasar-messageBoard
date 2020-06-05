@@ -68,9 +68,9 @@ export default {
         if (data.name === this.userAccount) {
           if (data.passwd === this.password) {
             this.$router.push({ path: '/MessageBoard' })
-            this.$store.commit('signUpIn/CURR_USER', data.name)
-            this.$store.commit('signUpIn/CURR_USER_ID', data.id)
-            this.$store.commit('signUpIn/CURR_USER_DATA', data)
+            this.$store.commit('Account/CURR_USER', data.name)
+            this.$store.commit('Account/CURR_USER_ID', data.id)
+            this.$store.commit('Account/CURR_USER_DATA', data)
             this.hasMatchAccount = true
           }
         }
@@ -93,12 +93,12 @@ export default {
       return 'primeplus'
     },
     ...mapGetters({
-      userData: 'signUpIn/userData'
+      userData: 'Account/userData'
     })
   },
 
   created () {
-    this.$store.dispatch('signUpIn/getAllUserData')
+    this.$store.dispatch('Account/getAllUserData')
   },
 
   mounted () { }

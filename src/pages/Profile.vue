@@ -20,30 +20,11 @@
         :itemName="'Created Time'"
         :itemValue="currUserData.createdAt"
       />
-      <div class="flex justify-between">
-        <q-btn
-          color="primary"
-          label="Edit Account"
-          v-if="!editData"
-          @click="editData = !editData"
-        />
+      <div class="flex justify-center">
         <q-btn
           color="red"
           label="Delete Account"
-          v-if="!editData"
           @click="deleteAccount"
-        />
-        <q-btn
-          color="primary"
-          label="Cancel"
-          v-if="!!editData"
-          @click="editData = !editData"
-        />
-        <q-btn
-          color="primary"
-          label="Save"
-          v-if="!!editData"
-          @click="updateAccount"
         />
       </div>
     </div>
@@ -62,47 +43,26 @@ export default {
     DataInput
   },
 
-  data () {
-    return {
-      newData: '',
-      newData0: '',
-      newData1: '',
-      newData2: '',
-      editData: false
-    }
-  },
-
   methods: {
     deleteAccount () {
       const api = `http://localhost:3000/user/${this.currUserData.id}`
       axios.delete(api).then(response => {
-        console.log('delete successfully')
-      })
-    },
-    updateAccount () {
-      this.editData = !this.editData
-      console.log(this.newData0)
-      console.log(this.newData1)
-      console.log(this.newData2)
-      const api = `http://localhost:3000/user/${this.currUserData.id}`
-      axios.patch(api, {
-        name: this.newData0,
-        email: this.newData1,
-        passwd: this.newData2
-      }).then(response => {
-        console.log(response)
+        if (response.status === 200) {
+          this.$store.commit('Account/CURR_USER', 'Sign In')
+          this.$router.push({ path: '/SignIn' })
+        }
       })
     }
   },
 
   computed: {
     ...mapGetters({
-      currUserData: 'signUpIn/currUserData'
+      currUserData: 'Account/currUserData'
     })
   },
 
   created () {
-    this.$store.dispatch('signUpIn/getAllUserData')
+    this.$store.dispatch('Account/getAllUserData')
   },
 
   mounted () { }

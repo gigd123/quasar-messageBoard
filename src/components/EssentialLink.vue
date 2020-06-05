@@ -43,11 +43,18 @@ export default {
     pageName: {
       type: String,
       default: '/'
+    },
+
+    leftDrawerOpen: {
+      type: Boolean,
+      default: false
     }
   },
   methods: {
     goPage (pageName) {
       this.$router.push({ path: `${pageName}` }, () => { })
+      const newLeftDrawerOpen = !this.leftDrawerOpen
+      this.$emit('newLeftDrawerOpen', newLeftDrawerOpen)
     }
   }
 }
